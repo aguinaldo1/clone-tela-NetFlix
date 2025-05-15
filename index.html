@@ -1,86 +1,120 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/main.css">
-
-    <!----Responsividade-->
-    <link rel="stylesheet" href="style/responsive.css">
-
-
-    <!---owl css-->
-    <link rel="stylesheet" href="style/owl/owl.carousel.css">
-    <link rel="stylesheet" href="style/owl/owl.theme.default.css">
-
     <title>NETFLIX CLONE</title>
+
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="style/responsive.css">
+    <link rel="shortcut icon" href="img/netflix.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        nav a {
+            position: relative;
+            margin: 0 10px;
+            padding: 5px 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: 0;
+            background-color: var(--vermelho);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        section {
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
+
 <body>
     <header>
-        <div class="conteiner">
+        <div class="container">
             <h2 class="logo">NETFLIX</h2>
             <nav>
-                <a href="#">Inicio</a>
-                <a href="#">Séries</a>
-                <a href="#">Filmes</a>
-                <a href="#">Documentários</a>
+                <a href="#inicio"><i class="fas fa-home"></i> Início</a>
+                <a href="#series"><i class="fas fa-tv"></i> Séries</a>
+                <a href="#filmes"><i class="fas fa-film"></i> Filmes</a>
+                <a href="#documentarios"><i class="fas fa-book"></i> Documentários</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <div class="filme-principal">
-            <!--< class="container">-->
-                <h3 class="titulo">HOUSE OF CARDS</h3>
-                <p class="descricao">Nada pode impedir o politico sem escrúpulos Frank Underwood de conquistar Washington. Assista agora a nova temporada de House of Cards que está imperdivel.</p>
-            
-               <div class="botoes">
-             <button role="button" class="botao">
-                <i class="fas fa-play"></i>
-                 ASSISTIR AGORA
-             </button>
-             <button role="button" class="botao">
-                <i class="fas fa-info-circle"></i>
-                 MAIS INFORMAÇÕES
-             </button>
-               </div>
+    <main id="inicio">
+        <div class="filme-destaque animate__animated animate__fadeIn">
+            <img id="imagem-destaque" src="" alt="Filme em Destaque">
+            <div class="info-destaque">
+                <h2 id="titulo-destaque"></h2>
+                <p id="sinopse-destaque"></p>
+                <button id="botao-trailer-destaque" class="botao-assistir">Ver Trailer</button>
             </div>
         </div>
     </main>
 
-    <div class="carrosel-filmes">
-        <div class="owl-carousel owl-theme">
-            <div class="item">
-                <img class="box-filme" src="img/mini1.jpg" alt="" srcset="">
+    <section id="series">
+        <div class="carrosel-filmes-destaques">
+            <h2>Séries em Destaque</h2>
+            <div class="owl-carousel owl-theme" id="carrosel-series">
+                <!-- Séries serão inseridas via JavaScript -->
             </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini2.jpg" alt="" srcset="">
+        </div>
+    </section>
+
+    <section id="filmes">
+        <div class="carrosel-filmes">
+            <h2>Filmes Populares</h2>
+            <div class="owl-carousel owl-theme" id="carrosel-filmes">
+                <!-- Filmes serão inseridos via JavaScript -->
             </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini3.jpg" alt="" srcset="">
+        </div>
+    </section>
+
+    <section id="documentarios">
+        <div class="carrosel-filmes">
+            <h2>Documentários</h2>
+            <div class="owl-carousel owl-theme" id="carrosel-documentarios">
+                <!-- Documentários serão inseridos via JavaScript -->
             </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini4.jpg" alt="" srcset="">
-            </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini5.jpg" alt="" srcset="">
-            </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini6.jpg" alt="" srcset="">
-            </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini7.jpg" alt="" srcset="">
-            </div>
-            <div class="item">
-                <img class="box-filme" src="img/mini8.jpg" alt="" srcset="">
-            </div>
+        </div>
+    </section>
+
+    <div id="modal-trailer" class="modal-trailer hidden">
+        <div class="modal-content">
+            <span id="fechar-modal">&times;</span>
+            <iframe id="iframe-trailer" width="100%" height="500px" frameborder="0" allowfullscreen></iframe>
         </div>
     </div>
 
-    <script src="https://kit.fontawesome.com/c9bcd0d25d.js" crossorigin="anonymous"></script>
-    <script src="js/owl/jquery.min.js"></script>
-    <script src="js/owl/owl.carousel.min.js"></script>
-    <script src="js/owl/setup.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="js/popular-filmes.js"></script>
 </body>
 </html>

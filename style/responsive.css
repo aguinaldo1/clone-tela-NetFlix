@@ -1,19 +1,52 @@
-@media screen and (max-width:700px){
-    header .container{
-       display: flex;
-       flex-direction: column; 
+@media screen and (max-width: 768px) { /* Ajustei o breakpoint para 768px */
+    header .container {
+        flex-direction: column;
+        align-items: flex-start; /* Alinhei os itens à esquerda */
     }
 
-
-    .botao{
-        margin-top: 5px;
-        width: 300px;
+    header nav ul {
+        flex-direction: column; /* Navegação em coluna */
+        width: 100%;
+        margin-top: 10px;
     }
 
- }
+    header nav li {
+        margin: 5px 0; /* Espaçamento vertical nos itens do menu */
+    }
 
- @media screen and (min-width:1000px){
-     .descricao{
-         width: 50%;
-     }
- }
+    .filme-principal {
+        height: auto; /* Altura automática para se ajustar ao conteúdo */
+        padding-bottom: 20px; /* Espaçamento abaixo do conteúdo */
+    }
+
+    .filme-principal .titulo {
+        font-size: 30px; /* Reduzi o tamanho do título */
+        margin-top: 30px;
+    }
+
+    .filme-principal .descricao {
+        width: 100%; /* Descrição ocupando toda a largura */
+    }
+
+    .botoes {
+        flex-direction: column; /* Botões em coluna */
+        align-items: center; /* Centralizei os botões */
+    }
+
+    .botao {
+        margin: 5px 0;
+        width: 100%; /* Botões ocupando toda a largura */
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) { /* Novo breakpoint */
+    .filme-principal .descricao {
+        width: 60%; /* Ajuste intermediário para a descrição */
+    }
+}
+
+@media screen and (min-width: 1201px) { /* Ajustei para 1201px */
+    .filme-principal .descricao {
+        width: 50%;
+    }
+}

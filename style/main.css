@@ -1,135 +1,297 @@
-:root{
-    --vermelho:#E50914;
-    --preta:#141414;
+
+:root {
+    --vermelho: #E50914;
+    --preto: #141414;
+    --cinza-texto: #AAA;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing: border-box;
-}
-
-/*elementos base*/
-body{
-   background: var(--preta);
-   font-family: 'Arial', Times, serif;
-   color:white;
-}
-
-
-header .container{
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    
-}
-
-header .logo{
-    margin-left: 5px;
-    color: var(--vermelho);
-    font-family: 'Arial Black', Times;
-    font-size:40px;
-}
-
-header nav a{
-    text-decoration:none;
-    color:#AAA;
-    margin-right: 10px;
-}
-
-
-header nav a:hover{
-    color:#fff;
-}
-
-/*filme principal*/
-.filme-principal{
-    font-size:16px;
-    background: linear-gradient(rgba(0,0,0,.50),rgba(0,0,0,.50)100%),  url('/img/capa-house.jpg');
-
-    //width: 1500px;
-
-    height:400px;
-    background-size:cover;
- 
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-
-.filme-principal .descricao{
-    margin-top: 10px;
-    margin-bottom: 40px;
-}
-
-
-.filme-principal .titulo{
-    margin-top: 15%;
-    font-size: 40px;
-    font-family: 'Trebuchet MS', Arial, sans-serif;
-}
-
-.botao{
-    background-color: rgba(0,0,0,.50);
-    border:none;
+body {
+    background-color: var(--preto);
     color: white;
-
-    padding:15px 30px;
-    margin-right: 15px;
-    font-size: 12px;
-
-    cursor: pointer;
-    transition: .3s ease all;
+    font-family: Arial, sans-serif;
 }
 
-.botao:hover{
-    background-color:white;
-    color:black;
-}
-
-.botao i{
-    margin-right: 8px;
-}
-
-
-.container{
-    margin-left: 20px;
-}
-
-.filme-principal .container{
-    width: 70%;
-}
-
-.box-filme{
-    height: 100%;
+/* Menu fixo */
+header {
+    position: fixed;
+    top: 0;
     width: 100%;
-    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    padding: 10px;
+}
+
+/* Filme destaque */
+.filme-destaque {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+}
+
+.filme-destaque img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Informações do destaque */
+.info-destaque {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 60%;
+}
+
+/* Carrossel de destaques */
+.carrosel-filmes-destaques {
+    margin-top: 30px;
+    padding: 20px;
+}
+
+.carrosel-filmes-destaques h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: center;
+}
+
+/* Menu de navegação aprimorado */
+.menu-navegacao {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cinza-texto);
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 25px;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: scale(1.05);
+}
+
+.menu-item.ativo {
+    background-color: var(--vermelho);
+    color: white;
+}
+
+.menu-item i {
+    font-size: 16px;
+}
+
+/* Responsividade adicional para o menu */
+@media (max-width: 768px) {
+    .menu-navegacao {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
     cursor: pointer;
+    color: white;
 }
 
-.carrosel-filmes{
-    margin-top:5px;
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-navegacao {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 15px;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .menu-navegacao.aberto {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    z-index: 1100;
+}
 
+.menu-navegacao a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
+.menu-navegacao a:hover {
+    color: var(--vermelho);
+}
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(20, 20, 20, 0.8);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
 
+.overlay.visivel {
+    opacity: 1;
+    pointer-events: all;
+}
 
+.hidden {
+    display: none;
+}
 
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
 
+    .menu-navegacao {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        gap: 15px;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1001;
+    }
 
+    .menu-navegacao.aberto {
+        pointer-events: auto;
+    }
+}
 
+.secao {
+    display: none;
+    padding: 80px 20px;
+    color: white;
+}
 
+.secao.ativa {
+    display: block;
+}
 
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
 
+/* Ajustes gerais para telas pequenas */
+@media (max-width: 768px) {
+    header .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
 
+    nav {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
 
+    nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
 
+    /* Ajusta a área do destaque para altura menor */
+    .filme-destaque {
+        height: 300px;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
 
+    .filme-destaque img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 
+    .info-destaque {
+        position: static;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 10px;
+        max-width: 100%;
+        border-radius: 0;
+    }
 
+    section {
+        padding: 40px 10px;
+    }
+
+    /* Texto menor para se ajustar melhor */
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Carrossel ocupa mais largura */
+    .owl-carousel .item img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Botões maiores para toque */
+    button {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+}
