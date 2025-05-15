@@ -2,6 +2,8 @@
 
 Este é um projeto de clone da Netflix desenvolvido como parte de um estudo/prática de desenvolvimento web. Ele utiliza HTML, CSS, JavaScript e integração com API externa para criar uma interface dinâmica com filmes populares e trailers reais.
 
+url para acessar a página: https://aguinaldo1.github.io/clone-tela-NetFlix/
+
 ## Funcionalidades
 
 * **Layout Responsivo:** Se adapta a diferentes tamanhos de tela (mobile, tablet e desktop).
